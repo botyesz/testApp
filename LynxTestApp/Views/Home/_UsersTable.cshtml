@@ -1,0 +1,64 @@
+﻿@model IEnumerable<LynxTestApp.Models.User>
+
+
+<table class="table">
+    @if (Model != null && Model.Count() != 0)
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                First name
+            </th>
+            <th>
+                Last name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                Phone number
+            </th>
+            <th></th>
+        </tr>
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.First_name)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Last_name)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone_number)
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    <div id="delete" style="display: inline-block;">
+                    <a id="@item.Id" href="#" class="text-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr style="color: red"><td colspan="3">No Matching Data</td></tr>
+    }
+</table>
+
+<script src="~/Custom_Scripts/DeleteUser.js"></script>
